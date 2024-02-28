@@ -22,29 +22,48 @@ public class Design {
     }
 
     public void setRating(double rating) {
-    	//your code goes here
+        if (rating < 0.0) {
+            throw new IllegalArgumentException("Rating cannot be negative");
+        }
+        this.rating = rating;
     }
 
     public double getRating() {
-    	//your code goes here
         return rating;
     }
 
     public String getKey() {
-    	//your code goes here
         return name + "_" + category + "_" + designerUsername;
     }
 
     public void displayDesignDetails() {
-    	//your code goes here
+        System.out.println("Design Key: " + getKey());
+        System.out.println("Rating: " + getRating());
+        System.out.println("Performed Math Operation on Rating: " + performMathOperation());
     }
 
     public double performMathOperation() {
-    	//your code goes here
         return 2 * rating;
     }
 
     public static void main(String[] args) {
-    	//your code goes here
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter Design Name:");
+        String name = scanner.nextLine();
+
+        System.out.println("Enter Design Category:");
+        String category = scanner.nextLine();
+
+        System.out.println("Enter Designer's Username:");
+        String designerUsername = scanner.nextLine();
+
+        System.out.println("Enter Design Rating:");
+        double rating = scanner.nextDouble();
+
+        Design design = Design.createDesignFromUserInput(name, category, designerUsername, rating);
+        design.displayDesignDetails();
+
+        scanner.close();
     }
 }

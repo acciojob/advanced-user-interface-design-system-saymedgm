@@ -9,4 +9,3 @@ public class DesignApplication {
         design.displayDesignDetails();
     }
 }
-
